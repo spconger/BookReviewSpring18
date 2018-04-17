@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BookReviewSpring18.Models;//reference models
 
 namespace BookReviewSpring18.Controllers
 {
@@ -10,7 +11,10 @@ namespace BookReviewSpring18.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //initialize entities classes
+            BookReviewDbEntities db = new BookReviewDbEntities();
+            //pass the collection categories to the index as a list
+            return View(db.Categories.ToList());
         }
 
         public ActionResult About()
